@@ -52,7 +52,8 @@ print(f"Bounding Box: {bounding_box}")
 
 # Create a bounding box polygon
 # bounding_box_polygon = box(min_x, min_y, max_x, max_y)
-bounding_box_polygon = box(0, min_y, 21000, max_y)
+# bounding_box_polygon = box(0, min_y, 21000, max_y)
+bounding_box_polygon = box(637000, 3902000, 672000, 3919000)
 
 # Select features within the bounding box
 cropped_data = data[data.geometry.intersects(bounding_box_polygon)]
