@@ -43,8 +43,8 @@ AUDIT = "1"
 INPUTFILTER = "*.DWG"
 
 # Specific coordinates to add
-latitude = 48.549769
-longitude = 18.220756
+latitude = 5715364.95858
+longitude = 4261022.33099
 
 # Step 1: Convert DWG to DXF using ODA File Converter
 cmd = [TEIGHA_PATH, INPUT_FOLDER, OUTPUT_FOLDER, OUTVER, OUTFORMAT, RECURSIVE, AUDIT, INPUTFILTER]
@@ -53,7 +53,8 @@ subprocess.run(cmd, shell=True)
 # Step 2: Load the converted DXF file using GeoPandas
 data = gpd.read_file("./output/Khoroseh Var-Plan & Profile.dxf")
 data['geom_type'] = data.geometry.type
-data.set_crs(epsg=4326, inplace=True)  # Assuming the original CRS is WGS 84
+# data.set_crs(epsg=4326, inplace=True)  # Assuming the original CRS is WGS 84
+data.set_crs(epsg=3857, inplace=True)  # Assuming the original CRS is WGS 84
 
 # Step 3: Calculate the bounding box and crop the data
 bounding_box = data.total_bounds  # Returns (minx, miny, maxx, maxy)
